@@ -51,7 +51,7 @@ class Boardgames(models.Model):
         self.save()
 
     def __str__(self):
-        return str(self.user_name)
+        return str(self.id)
 
 
 class BoardgamesAvailable(models.Model):

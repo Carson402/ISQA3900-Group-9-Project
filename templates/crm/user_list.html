@@ -22,7 +22,7 @@
                 <div class="panel panel-primary">
                     <div class="panel-heading">Welcome!</div>
                     <div class="panel-body">
-                        Board Games.
+                        Users.
                     </div>
                 </div>
             </div>
@@ -49,17 +49,17 @@
             </tr>
             </thead>
             <tbody>
-            {% for customer in customers %}
+            {% for user in users %}
                 <tr>
-                    <td>{{ User.user_name }}</td>
-                    <td>{{ User.user_first_name }}</td>
-                    <td>{{ User.user_last_name }}</td>
-                    <td>{{ User.user_email }}</td>
-                    <td>{{ User.address }}</td>
-                    <td>{{ User.city }}</td>
-                    <td>{{ User.state }}</td>
-                    <td>{{ User.zipcode }}</td>
-                    <td>{{ User.phone_number }}</td>
+                    <td>{{ user.user_name }}</td>
+                    <td>{{ user.user_first_name }}</td>
+                    <td>{{ user.user_last_name }}</td>
+                    <td>{{ user.user_email }}</td>
+                    <td>{{ user.address }}</td>
+                    <td>{{ user.city }}</td>
+                    <td>{{ user.state }}</td>
+                    <td>{{ user.zipcode }}</td>
+                    <td>{{ user.phone_number }}</td>
                     <td><a href="{% url 'crm:user_edit' pk=user.pk %}" class="btn btn-warning">Edit</a>
 
                     <td><a href="{% url 'crm:user_delete' pk=user.pk %}"
