@@ -35,6 +35,7 @@ class Boardgames(models.Model):
     boardgames_title = models.CharField(max_length=100)
     boardgames_genre = models.CharField(max_length=50)
     boardgames_BGG_rank = models.IntegerField()
+    boardgames_year = models.IntegerField(default='2021')
     boardgames_player_count_min = models.IntegerField()
     boardgames_player_count_max = models.IntegerField()
     boardgames_msrp = models.IntegerField()

@@ -11,6 +11,6 @@ class UserForm(forms.ModelForm):
 class BoardGameForm(forms.ModelForm):
    class Meta:
        model = Boardgames
-       fields = ( 'boardgames_title', 'boardgames_genre', 'boardgames_BGG_rank',
+       fields = ( 'boardgames_title', 'boardgames_genre', 'boardgames_BGG_rank', 'boardgames_year',
                  'boardgames_player_count_min', 'boardgames_player_count_max', 'boardgames_msrp')
 
