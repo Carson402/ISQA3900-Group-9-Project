@@ -19,7 +19,7 @@
                 <div class="panel panel-primary">
                     <div class="panel-heading">Welcome!</div>
                     <div class="panel-body">
-                        SAMPLE TEXT
+                        All Board Games for users to add to their want or trade lists
                     </div>
                 </div>
             </div>
@@ -51,7 +51,7 @@
                     <td>{{ boardgames.boardgames_year }}</td>
                     <td>{{ boardgames.boardgames_player_count_min }}</td>
                     <td>{{ boardgames.boardgames_player_count_max }}</td>
-                    <td>{{ boardgames.boardgames_msrp }}</td>
+                    <td>${{ boardgames.boardgames_msrp|floatformat:2 }}</td>
                     <td><a href="{% url 'crm:boardgames_edit' pk=boardgames %}"
                            class="btn btn-warning">Edit</a></td>
                     <td><a href="{% url 'crm:boardgames_delete' pk=boardgames %}"
