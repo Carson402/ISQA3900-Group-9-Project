@@ -67,7 +67,7 @@
 
             <!-- Branding Image -->
             <a class="navbar-brand" href="/">
-                Omaha Board Game Swap
+                Omaha Board Game Swap Site
             </a>
         </div>
         <div class="collapse navbar-collapse" id="myNavbar">
@@ -97,13 +97,33 @@
 <div class="content container">
     <div class="row">
         <div class="col-md-8">
+            {% block topcontent %}
+                <div class="links">
+                    <!-- Example row of columns -->
+                    <div class="row">
+                        <!div class="col-md-3">
+                            <h2>Is this what your Board Game Collection looks like?</h2>
+                            <div class="thumbnail">
+                                <img src="{% static "images/QXTRE6l.jpeg" %}" alt="Games" class="center"/>
+                                <div class="caption">
+                                    <p>As Board Gamers our collections can exceed our storage capacity.
+                                        This site allows a user to list all the games that they are no longer playing
+                                        and which are taking up space to be added to their trade list. Other users can then
+                                        look through the games and offer trades.</p>
+                                    <p><a class="btn btn-default" href="{% url 'login' %}" role="button">LogIn &raquo;</a></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endblock %}
             {% block content %}
                 <div class="links">
                     <!-- Example row of columns -->
                     <div class="row">
                         <div class="col-md-3">
                             <div class="thumbnail">
-                                <img src="{% static "images/customer.jpg" %}" alt="Users"/>
+                                <img src="{% static "images/User2.jpg" %}" alt="Users"/>
                                 <div class="caption">
                                     <h2>Users</h2>
                                     <p>Sample Text</p>
