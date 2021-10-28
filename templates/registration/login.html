@@ -24,5 +24,7 @@
     {# Assumes you setup the password_reset view in your URLconf #}
 <p><a href="{% url 'password_reset' %}">Forgot password?</a></p>
 
+<p><a href="{% url 'crm:register' %}">Create Account</a></p>
+
 </form>
 {% endblock content %}

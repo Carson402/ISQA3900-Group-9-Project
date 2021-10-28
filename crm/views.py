@@ -103,3 +103,18 @@ def summary(request, pk):
     boardgames = Boardgames.objects.filter(cust_name=pk)
 
     return render(request, 'crm/summary.html', {'user': user, 'boardgames': boardgames})
+
+def register(request):
+    if request.method == "GET":
+        return render(
+            request, "registration/register.html",
+            {"form": CustomUserCreationForm}
+        )
+    elif request.method == "POST":
+        user = get_object_or_404(User)
+        form = CustomUserCreationForm(request.POST, instance=user)
+        if form.is_valid():
+            user = form.save()
+            user.save()
+            return render(request, 'crm/home.html',
+                          {'user': user})

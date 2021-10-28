@@ -14,4 +14,5 @@ urlpatterns = [
     path('boardgame/<int:pk>/edit/', views.boardgames_edit, name='boardgames_edit'),
     path('boardgame/<int:pk>/delete/', views.boardgames_delete, name='boardgames_delete'),
     path('user/<int:pk>/summary/', views.summary, name='summary'),
+    path('accounts/login/register/', views.register, name='register'),
 ]

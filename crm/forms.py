@@ -1,5 +1,6 @@
 from django import forms
 from .models import User, Boardgames
+from django.contrib.auth.forms import UserCreationForm
 
 class UserForm(forms.ModelForm):
     class Meta:
@@ -14,3 +15,6 @@ class BoardGameForm(forms.ModelForm):
        fields = ( 'boardgames_title', 'boardgames_genre', 'boardgames_BGG_rank', 'boardgames_year',
                  'boardgames_player_count_min', 'boardgames_player_count_max', 'boardgames_msrp')
 
+class CustomUserCreationForm(UserCreationForm):
+    class Meta(UserCreationForm.Meta):
+        fields = UserCreationForm.Meta.fields + ("email",)
