@@ -66,8 +66,8 @@
                            onclick="return confirm('Are you sure you want to delete?')"
                            class="btn btn-danger">Delete</a>
                     </td>
-                    <td><a href="{% url 'crm:summary' pk=user.pk %}"
-                           class="btn btn-primary">Summary</a>
+                    <td><a href="{% url 'crm:user_detail' pk=user.pk %}"
+                           class="btn btn-primary">User Detail</a>
 
                 </tr>
             {% endfor %}

@@ -52,12 +52,16 @@
                     <td>{{ boardgames.boardgames_player_count_min }}</td>
                     <td>{{ boardgames.boardgames_player_count_max }}</td>
                     <td>${{ boardgames.boardgames_msrp|floatformat:2 }}</td>
+                    {%  if request.user.is_superuser %}
                     <td><a href="{% url 'crm:boardgames_edit' pk=boardgames %}"
                            class="btn btn-warning">Edit</a></td>
                     <td><a href="{% url 'crm:boardgames_delete' pk=boardgames %}"
                            onclick="return confirm('Are you sure you want to delete?')"
                            class="btn btn-danger">Delete</a>
                     </td>
+                    {% endif %}
+                    <td><a href="{% url 'crm:boardgame_detail' pk=boardgames.pk %}"
+                           class="btn btn-primary">Boardgame Detail</a>
                 </tr>
             {% endfor %}
             </tbody>

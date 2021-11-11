@@ -97,12 +97,20 @@ def boardgames_delete(request, pk):
 
 
 @login_required
-def summary(request, pk):
+def boardgame_detail(request, pk):
+    boardgames = get_object_or_404(User, pk=pk)
+    boardgames = Boardgames.objects.filter(created_date__lte=timezone.now())
+    boardgames = Boardgames.objects.filter(boardgames_title=pk)
+
+    return render(request, 'crm/boardgame_detail.html', {'boardgames': boardgames})
+
+@login_required
+def user_detail(request, pk):
     user = get_object_or_404(User, pk=pk)
     user = User.objects.filter(created_date__lte=timezone.now())
-    boardgames = Boardgames.objects.filter(cust_name=pk)
+    users = users.objects.filter(user_name=pk)
 
-    return render(request, 'crm/summary.html', {'user': user, 'boardgames': boardgames})
+    return render(request, 'crm/user_detail.html', {'users': users})
 
 def register(request):
     if request.method == "GET":

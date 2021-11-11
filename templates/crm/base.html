@@ -100,7 +100,7 @@
             {% block topcontent %}
                 <div class="links">
                     <!-- Example row of columns -->
-                    <div class="row">
+                    <div {%  if request.path != '/' %} style="display: none;" {% endif %} class="row">
                         <!div class="col-md-3">
                             <h2>Is this what your Board Game Collection looks like?</h2>
                             <div class="thumbnail">
