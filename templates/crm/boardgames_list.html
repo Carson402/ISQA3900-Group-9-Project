@@ -60,8 +60,8 @@
                            class="btn btn-danger">Delete</a>
                     </td>
                     {% endif %}
-                    <td><a href="{% url 'crm:boardgame_detail' pk=boardgames.pk %}"
-                           class="btn btn-primary">Boardgame Detail</a>
+                    <td><a href="{% url 'crm:boardgames_detail' pk=boardgames.pk %}"
+                           class="btn btn-primary">Boardgame Details</a>
                 </tr>
             {% endfor %}
             </tbody>

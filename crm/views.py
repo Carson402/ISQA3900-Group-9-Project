@@ -33,7 +33,7 @@ def user_edit(request, pk):
             user.updated_date = timezone.now()
             user.save()
             user = User.objects.filter(created_date__lte=timezone.now())
-            return render(request, 'crm/boardgames_list.html',
+            return render(request, 'crm/user_list.html',
                           {'users': user})
     else:
         # edit
@@ -47,12 +47,18 @@ def user_delete(request, pk):
     user.delete()
     return redirect('crm:user_list')
 
+@login_required
+def user_detail(request, pk):
+    user = get_object_or_404(User, pk=pk)
+    user = User.objects.filter(created_date__lte=timezone.now())
+    users = user.objects.filter(user_name=pk)
+
+    return render(request, 'crm/user_detail.html', {'users': users})
 
 @login_required
 def boardgames_list(request):
     boardgames = Boardgames.objects.filter(created_date__lte=timezone.now())
     return render(request, 'crm/boardgames_list.html', {'boardgames': boardgames})
-
 
 @login_required
 def boardgames_new(request):
@@ -69,7 +75,6 @@ def boardgames_new(request):
         form = BoardGameForm()
         # print("Else")
     return render(request, 'crm/boardgames_new.html', {'form': form})
-
 
 @login_required
 def boardgames_edit(request, pk):
@@ -95,22 +100,13 @@ def boardgames_delete(request, pk):
     boardgames.delete()
     return redirect('crm:boardgames_list')
 
-
 @login_required
-def boardgame_detail(request, pk):
+def boardgames_detail(request, pk):
     boardgames = get_object_or_404(User, pk=pk)
     boardgames = Boardgames.objects.filter(created_date__lte=timezone.now())
     boardgames = Boardgames.objects.filter(boardgames_title=pk)
 
-    return render(request, 'crm/boardgame_detail.html', {'boardgames': boardgames})
-
-@login_required
-def user_detail(request, pk):
-    user = get_object_or_404(User, pk=pk)
-    user = User.objects.filter(created_date__lte=timezone.now())
-    users = users.objects.filter(user_name=pk)
-
-    return render(request, 'crm/user_detail.html', {'users': users})
+    return render(request, 'crm/boardgames_list.html', {'boardgames': boardgames})
 
 def register(request):
     if request.method == "GET":
