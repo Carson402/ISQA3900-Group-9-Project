@@ -6,6 +6,9 @@ from .forms import *
 from django.shortcuts import redirect
 from django.db.models import Sum
 from _decimal import Decimal
+from django.contrib import messages
+from django.contrib.auth.forms import UserCreationForm
+from .forms import CustomUserCreationForm
 
 now = timezone.now()
 
@@ -50,8 +53,8 @@ def user_delete(request, pk):
 @login_required
 def user_detail(request, pk):
     user = get_object_or_404(User, pk=pk)
-    user = User.objects.filter(created_date__lte=timezone.now())
-    users = user.objects.filter(user_name=pk)
+    users = User.objects.filter(user_name=user.user_name)
+
 
     return render(request, 'crm/user_detail.html', {'users': users})
 
@@ -102,23 +105,20 @@ def boardgames_delete(request, pk):
 
 @login_required
 def boardgames_detail(request, pk):
-    boardgames = get_object_or_404(User, pk=pk)
-    boardgames = Boardgames.objects.filter(created_date__lte=timezone.now())
-    boardgames = Boardgames.objects.filter(boardgames_title=pk)
+    boardgames = get_object_or_404(Boardgames, pk=pk)
+    boardgames = Boardgames.objects.filter(boardgames_title=boardgames.boardgames_title)
 
-    return render(request, 'crm/boardgames_list.html', {'boardgames': boardgames})
+    return render(request, 'crm/boardgames_detail.html', {'boardgames': boardgames})
 
 def register(request):
-    if request.method == "GET":
-        return render(
-            request, "registration/register.html",
-            {"form": CustomUserCreationForm}
-        )
-    elif request.method == "POST":
-        user = get_object_or_404(User)
-        form = CustomUserCreationForm(request.POST, instance=user)
-        if form.is_valid():
-            user = form.save()
-            user.save()
-            return render(request, 'crm/home.html',
-                          {'user': user})
+    if request.method == 'POST':
+        f = CustomUserCreationForm(request.POST)
+        if f.is_valid():
+            f.save()
+            messages.success(request, 'Account created successfully')
+            return redirect('crm:register')
+
+    else:
+        f = CustomUserCreationForm()
+
+    return render(request, 'crm/register.html', {'form': f})
