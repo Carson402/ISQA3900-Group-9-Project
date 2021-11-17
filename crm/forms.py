@@ -1,12 +1,17 @@
 from django import forms
-from .models import User, Boardgames
+from .models import CRMUser, Boardgames
 from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.models import User
 
 class UserForm(forms.ModelForm):
     class Meta:
         model = User
-        fields = ('user_name', 'user_first_name', 'user_last_name', 'user_email', 'address', 'city',
-                  'state', 'zipcode', 'phone_number')
+        fields = ('username', 'first_name', 'last_name', 'email')
+
+class CRMUserForm(forms.ModelForm):
+    class Meta:
+        model = CRMUser
+        fields = ('address', 'city', 'state', 'zipcode', 'phone_number')
 
 
 class BoardGameForm(forms.ModelForm):

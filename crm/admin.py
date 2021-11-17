@@ -1,13 +1,14 @@
 from django.contrib import admin
 
-from .models import User, Boardgames
+from .models import CRMUser, Boardgames
+from django.contrib.auth.models import User
 
 
 class UserList(admin.ModelAdmin):
-    list_display = ('user_name', 'user_last_name', 'user_first_name')
-    list_filter = ('user_name', 'user_last_name')
-    search_fields = ('user_name',)
-    ordering = ['user_name']
+    list_display = ('username', 'last_name', 'first_name')
+    list_filter = ('username', 'last_name')
+    search_fields = ('username',)
+    ordering = ['username']
 
 
 class BoardgamesList(admin.ModelAdmin):
@@ -16,6 +17,4 @@ class BoardgamesList(admin.ModelAdmin):
     search_fields = ('boardgames_title',)
     ordering = ['boardgames_title']
 
-
-admin.site.register(User, UserList)
 admin.site.register(Boardgames, BoardgamesList)

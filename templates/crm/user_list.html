@@ -52,16 +52,16 @@
             <tbody>
             {% for user in users %}
                 <tr>
-                    <td>{{ user.user_name }}</td>
-                    <td>{{ user.user_first_name }}</td>
-                    <td>{{ user.user_last_name }}</td>
-                    <td>{{ user.user_email }}</td>
+                    <td>{{ user.username }}</td>
+                    <td>{{ user.first_name }}</td>
+                    <td>{{ user.last_name }}</td>
+                    <td>{{ user.email }}</td>
                     {%  if request.user.is_superuser %}
-                    <td>{{ user.address }}</td>
-                    <td>{{ user.city }}</td>
-                    <td>{{ user.state }}</td>
-                    <td>{{ user.zipcode }}</td>
-                    <td>{{ user.phone_number }}</td>
+                    <td>{{ crmuser.address }}</td>
+                    <td>{{ crmuser.city }}</td>
+                    <td>{{ crmuser.state }}</td>
+                    <td>{{ crmuser.zipcode }}</td>
+                    <td>{{ crmuser.phone_number }}</td>
 
                     <td><a href="{% url 'crm:user_edit' pk=user.pk %}"
                            class="btn btn-warning">Edit User</a>

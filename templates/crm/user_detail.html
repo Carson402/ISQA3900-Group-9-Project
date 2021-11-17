@@ -43,10 +43,10 @@
             <tbody>
             {% for user in users %}
                 <tr>
-                    <td>{{ user.user_name }}</td>
-                    <td>{{ user.user_first_name }}</td>
-                    <td>{{ user.user_last_name }}</td>
-                    <td>{{ user.user_email }}</td>
+                    <td>{{ user.username }}</td>
+                    <td>{{ user.first_name }}</td>
+                    <td>{{ user.last_name }}</td>
+                    <td>{{ user.email }}</td>
                     {%  if request.user.is_superuser %}
                     <td>{{ user.address }}</td>
                     <td>{{ user.city }}</td>

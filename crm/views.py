@@ -9,6 +9,7 @@ from _decimal import Decimal
 from django.contrib import messages
 from django.contrib.auth.forms import UserCreationForm
 from .forms import CustomUserCreationForm
+from django.contrib.auth.models import User
 
 now = timezone.now()
 
@@ -20,7 +21,7 @@ def home(request):
 
 @login_required
 def user_list(request):
-    user = User.objects.filter(created_date__lte=timezone.now())
+    user = User.objects.filter(is_active=True)
     return render(request, 'crm/user_list.html',
                   {'users': user})
 
@@ -30,18 +31,20 @@ def user_edit(request, pk):
     user = get_object_or_404(User, pk=pk)
     if request.method == "POST":
         # update
-        form = UserForm(request.POST, instance=user)
-        if form.is_valid():
-            user = form.save(commit=False)
-            user.updated_date = timezone.now()
-            user.save()
-            user = User.objects.filter(created_date__lte=timezone.now())
-            return render(request, 'crm/user_list.html',
-                          {'users': user})
+        user_form = UserForm(request.POST, instance=request.user)
+        crmuser_form = CRMUserForm(request.POST, instance=request.user.crmuser)
+        if user_form.is_valid() and crmuser_form.is_valid():
+            user_form.save()
+            crmuser_form.save()
+            return render(request, 'crm/user_list.html')
     else:
         # edit
-        form = UserForm(instance=user)
-    return render(request, 'crm/user_edit.html', {'form': form})
+        user_form = UserForm(instance=request.user)
+        crmuser_form = CRMUserForm(request.POST, instance=request.user.crmuser)
+    return render(request, 'crm/user_edit.html', {
+        'user_form': user_form,
+        'crmuser_form': crmuser_form
+    })
 
 
 @login_required
@@ -53,7 +56,7 @@ def user_delete(request, pk):
 @login_required
 def user_detail(request, pk):
     user = get_object_or_404(User, pk=pk)
-    users = User.objects.filter(user_name=user.user_name)
+    users = User.objects.filter(username=user.username)
 
 
     return render(request, 'crm/user_detail.html', {'users': users})
