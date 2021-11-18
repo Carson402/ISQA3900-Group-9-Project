@@ -16,15 +16,11 @@
     </div>
 </div>
 <div class="row">
-<<<<<<< HEAD
+
     {% for user in users %}
-  <h1 style="padding-left: 15Px">User Detail for {{ user.user_name }}</h1>
-    {% endfor %}
-=======
   <h1 style="padding-left: 15Px">User Detail for {{ user.username }}</h1>
+    {% endfor %}
 
-
->>>>>>> cd005e87b2163cd00f44191519432ab2685c46e5
     <div class="row">
         <h2 style="padding-left: 15Px">Specific User Information</h2>
     </div>
@@ -68,7 +64,7 @@
     <div class="row">
     <table class="table table-striped table-bordered table-hover">
         {% for user in users %}
-        <h2 style="padding-left: 15Px">{{ user.user_name }}'s Boardgames for Trade</h2>
+        <h2 style="padding-left: 15Px">{{ user.username }}'s Boardgames for Trade</h2>
         {% endfor %}
             <thead>
             <tr class="bg-info">
@@ -95,7 +91,7 @@
     <div class="row">
     <table class="table table-striped table-bordered table-hover">
         {% for user in users %}
-        <h2 style="padding-left: 15Px">{{ user.user_name }}'s Boardgames Wanted</h2>
+        <h2 style="padding-left: 15Px">{{user.username }}'s Boardgames Wanted</h2>
         {% endfor %}
             <thead>
             <tr class="bg-info">
