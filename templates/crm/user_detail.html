@@ -9,19 +9,26 @@
             <div class="panel panel-primary">
                 <div class="panel-heading">Welcome!</div>
                 <div class="panel-body">
-                    Here you can see your profile and a list of the games on your want list and trade list.
+                    Here you can see this users profile and a list of the games on their want lists and trade lists.
                 </div>
             </div>
         </div>
     </div>
 </div>
 <div class="row">
+<<<<<<< HEAD
+    {% for user in users %}
+  <h1 style="padding-left: 15Px">User Detail for {{ user.user_name }}</h1>
+    {% endfor %}
+=======
   <h1 style="padding-left: 15Px">User Detail for {{ user.username }}</h1>
 
 
+>>>>>>> cd005e87b2163cd00f44191519432ab2685c46e5
     <div class="row">
         <h2 style="padding-left: 15Px">Specific User Information</h2>
     </div>
+
     <div class="row">
         <table class="table table-striped table-bordered table-hover">
             <thead>
@@ -37,7 +44,6 @@
                 <th>Zip Code</th>
                 <th>Phone Number</th>
                 {% endif %}
-
             </tr>
             </thead>
             <tbody>
@@ -58,6 +64,59 @@
             </tbody>
         </table>
     </div>
-</div>
 
+    <div class="row">
+    <table class="table table-striped table-bordered table-hover">
+        {% for user in users %}
+        <h2 style="padding-left: 15Px">{{ user.user_name }}'s Boardgames for Trade</h2>
+        {% endfor %}
+            <thead>
+            <tr class="bg-info">
+                <th>Boardgame Title</th>
+                <th>Boardgames Condition</th>
+                <th>Boardgames Notes</th>
+                <th>Date Created</th>
+                <th>Date Updated</th>
+            </tr>
+            </thead>
+                <tbody>
+                {% for boardgames in BoardgamesAvailable %}
+                    <tr>
+                        <td>{{ boardgame.boardgames_title }}</td>
+                        <td>{{ boardgame.boardgames_condition }}</td>
+                        <td>{{ uboardgameer.boardgames_notes }}</td>
+                        <td>{{ boardgame.created_date }}</td>
+                        <td>{{ boardgame.updated_date }}</td>
+                {% endfor %}
+                </tbody>
+    </table>
+    </div>
+
+    <div class="row">
+    <table class="table table-striped table-bordered table-hover">
+        {% for user in users %}
+        <h2 style="padding-left: 15Px">{{ user.user_name }}'s Boardgames Wanted</h2>
+        {% endfor %}
+            <thead>
+            <tr class="bg-info">
+                <th>Boardgame Title</th>
+                <th>Boardgames Condition</th>
+                <th>Boardgames Notes</th>
+                <th>Date Created</th>
+                <th>Date Updated</th>
+            </tr>
+            </thead>
+                <tbody>
+                {% for boardgames in BoardgamesRequested %}
+                    <tr>
+                        <td>{{ boardgame.boardgames_title }}</td>
+                        <td>{{ boardgame.boardgames_condition }}</td>
+                        <td>{{ uboardgameer.boardgames_notes }}</td>
+                        <td>{{ boardgame.created_date }}</td>
+                        <td>{{ boardgame.updated_date }}</td>
+                {% endfor %}
+                </tbody>
+    </table>
+    </div>
+</div>
 {% endblock %}

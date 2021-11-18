@@ -16,4 +16,6 @@ urlpatterns = [
     path('boardgames/<int:pk>/edit/', views.boardgames_edit, name='boardgames_edit'),
     path('boardgames/<int:pk>/delete/', views.boardgames_delete, name='boardgames_delete'),
     path('boardgames/<int:pk>/detail/', views.boardgames_detail, name='boardgames_detail'),
+    path('boardgames/<int:pk>/trade/', views.all_user_trade_list, name='all_user_trade_list'),
+    #path('boardgames/<int:pk>/want/', views.all_user_want_list, name='all_user_want_list'),
 ]

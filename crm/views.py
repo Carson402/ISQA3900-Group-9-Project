@@ -113,6 +113,23 @@ def boardgames_detail(request, pk):
 
     return render(request, 'crm/boardgames_detail.html', {'boardgames': boardgames})
 
+@login_required
+def all_user_trade_list(request, pk):
+    boardgames = get_object_or_404(Boardgames, pk=pk)
+    #boardgames = Boardgames.objects.filter(boardgames_title=boardgames.boardgames_title)
+
+    #user = get_object_or_404(BoardgamesAvailable)
+    users = BoardgamesAvailable.objects.filter(boardgames=boardgames.id)
+
+    return render(request, 'crm/all_user_trade_list.html', {'users': users})
+
+@login_required
+#def all_user_want_list(request, pk):
+#    boardgames = get_object_or_404(Boardgames, pk=pk)
+#    boardgames = Boardgames.objects.filter(boardgames_title=boardgames.boardgames_title)
+
+#    return render(request, 'crm/all_user_want_list.html', {'boardgames': boardgames})
+
 def register(request):
     if request.method == 'POST':
         f = CustomUserCreationForm(request.POST)

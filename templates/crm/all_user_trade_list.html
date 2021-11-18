@@ -1,0 +1,82 @@
+% extends 'crm/base.html' %}
+{% block content %}
+{% load mathfilters %}
+{% load humanize %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-10 col-md-offset-1">
+            <div class="panel panel-primary">
+                <div class="panel-heading">Welcome!</div>
+                <div class="panel-body">
+                    Here you can see which users have this board game on their Trade List.
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    {% for boardgames in boardgames %}
+        <h1 style="padding-left: 15Px">Board Game Detail for {{ boardgames.boardgames_title }}</h1>
+    {% endfor %}
+    <div class="row">
+        <h2 style="padding-left: 15Px">Board Game Information</h2>
+    </div>
+    <div class="row">
+        <table class="table table-striped table-bordered table-hover">
+            <thead>
+            <tr class="bg-info">
+                <th>Title</th>
+                <th>Genre</th>
+                <th>BGG Rank</th>
+                <th>Minimum Players</th>
+                <th>Maximum Players</th>
+                <th>MSRP</th>
+            </tr>
+            </thead>
+
+            <tbody>
+            {% for boardgames in boardgames %}
+                <tr>
+                <td>{{ boardgames.boardgames_title }}</td>
+                <td>{{ boardgames.boardgames_genre }}</td>
+                <td>{{ boardgames.boardgames_BGG_rank }}</td>
+                <td>{{ boardgames.boardgames_player_count_min }}</td>
+                <td>{{ boardgames.boardgames_player_count_max }}</td>
+                <td>${{ boardgames.boardgames_msrp }}</td>
+            {% endfor %}
+
+            </tbody>
+        </table>
+    </div>
+
+    <div class="row">
+        <h2 style="padding-left: 15Px">User Information</h2>
+    </div>
+    <div>
+        <table class="table table-striped table-bordered table-hover">
+            <thead>
+            <tr class="bg-info">
+                <th>Username</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th colspan="3">Actions</th>
+            </tr>
+            </thead>
+
+            <tbody>
+            {% for user in users %}
+                <tr>
+                    <td>{{ user.user_name }}</td>
+                    <td>{{ user.user_first_name }}</td>
+                    <td>{{ user.user_last_name }}</td>
+
+                    <td><a href="{% url 'crm:home' pk=user.pk %}"
+                           class="btn btn-warning">Go to this Users Page</a>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+ </div>
