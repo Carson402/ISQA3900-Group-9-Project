@@ -4,9 +4,10 @@ from django.urls import path, re_path
 
 app_name = 'crm'
 urlpatterns = [
-    url(r'^register/$', views.register, name='register'),
+    #url(r'^register/$', views.register, name='register'),
     path('', views.home, name='home'),
     re_path(r'^home/$', views.home, name='home'),
+    re_path(r'^register/', views.register, name='register'),
     path('user_list', views.user_list, name='user_list'),
     path('user/<int:pk>/edit/', views.user_edit, name='user_edit'),
     path('user/<int:pk>/delete/', views.user_delete, name='user_delete'),
