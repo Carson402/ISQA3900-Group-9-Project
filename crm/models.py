@@ -60,7 +60,7 @@ class Boardgames(models.Model):
 
 class BoardgamesAvailable(models.Model):
     username = models.ForeignKey(User, on_delete=models.CASCADE, related_name='gamesAvailable')
-    boardgames_title = models.CharField(max_length=100)
+    boardgames = models.ForeignKey(Boardgames, on_delete=models.CASCADE)
     boardgames_condition = models.TextField(max_length=50)
     boardgames_notes = models.IntegerField()
     created_date = models.DateTimeField(default=timezone.now)
@@ -80,7 +80,7 @@ class BoardgamesAvailable(models.Model):
 
 class BoardgamesRequested(models.Model):
     username = models.ForeignKey(User, on_delete=models.CASCADE, related_name='GamesRequested')
-    boardgames_title = models.CharField(max_length=100)
+    boardgames = models.ForeignKey(Boardgames, on_delete=models.CASCADE)
     boardgames_condition = models.TextField(max_length=50)
     boardgames_notes = models.IntegerField()
     created_date = models.DateTimeField(default=timezone.now)
