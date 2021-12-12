@@ -2,6 +2,9 @@ from django import forms
 from .models import CRMUser, Boardgames
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
+from django.contrib.auth.forms import PasswordResetForm
+from captcha.fields import ReCaptchaField
+from captcha.widgets import ReCaptchaV2Checkbox
 
 class UserForm(forms.ModelForm):
     class Meta:
@@ -23,3 +26,6 @@ class BoardGameForm(forms.ModelForm):
 class CustomUserCreationForm(UserCreationForm):
     class Meta(UserCreationForm.Meta):
         fields = UserCreationForm.Meta.fields + ("email",)
+
+class PasswordResetReCaptchaForm(PasswordResetForm):
+        captcha = ReCaptchaField(widget=ReCaptchaV2Checkbox)

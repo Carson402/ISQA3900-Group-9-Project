@@ -28,6 +28,10 @@ DEBUG = True
 ALLOWED_HOSTS = ['127.0.0.1', '.pythonanywhere.com']
 
 
+RECAPTCHA_PUBLIC_KEY = '6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI'
+RECAPTCHA_PRIVATE_KEY = '6LeIxAcTAAAAAGG-vFI1TnRWxMZNFuojJ4WifJWe'
+RECAPTCHA_OPTIONS = {'theme':'clean'}
+SILENCED_SYSTEM_CHECKS = ['captcha.recaptcha_test_key_error']
 # Application definition
 
 INSTALLED_APPS = [
@@ -40,6 +44,8 @@ INSTALLED_APPS = [
     'crm.apps.CrmConfig',
     'mathfilters',
     'django.contrib.humanize',
+    'captcha',
+
 
 ]
 
@@ -104,6 +110,12 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+#E-Mail Functions
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'dlanier.isqa@gmail.com'
+EMAIL_HOST_PASSWORD = 'ClassAccount123'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
 
 # Internationalization
 # https://docs.djangoproject.com/en/3.2/topics/i18n/

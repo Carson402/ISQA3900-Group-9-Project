@@ -10,6 +10,8 @@ from django.contrib import messages
 from django.contrib.auth.forms import UserCreationForm
 from .forms import CustomUserCreationForm
 from django.contrib.auth.models import User
+from django.contrib.auth.views import PasswordResetView
+from .forms import PasswordResetReCaptchaForm
 
 now = timezone.now()
 
@@ -142,3 +144,7 @@ def register(request):
         f = CustomUserCreationForm()
 
     return render(request, 'crm/register.html', {'form': f})
+
+class PasswordResetReCaptcha(PasswordResetView):
+    form_class = PasswordResetReCaptchaForm
+
