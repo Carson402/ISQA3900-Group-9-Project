@@ -1,4 +1,4 @@
-% extends 'crm/base.html' %}
+{% extends 'crm/base.html' %}
 {% block content %}
 {% load mathfilters %}
 {% load humanize %}
@@ -7,9 +7,9 @@
     <div class="row">
         <div class="col-md-10 col-md-offset-1">
             <div class="panel panel-primary">
-                <div class="panel-heading">Welcome!</div>
+                <div class="panel-heading">All User Want List</div>
                 <div class="panel-body">
-                    Here you can see which users have this board game on their Want List.
+                    Here you can see which users have {{ boardgames.boardgames_title }} on their Want List.
                 </div>
             </div>
         </div>
@@ -72,7 +72,7 @@
                     <td>{{ user.user_first_name }}</td>
                     <td>{{ user.user_last_name }}</td>
 
-                    <td><a href="{% url 'crm:home' pk=user.pk %}"
+                    <td><a href="{% url 'crm:user_detail' pk=user.pk %}"
                            class="btn btn-warning">Go to this Users Page</a>
                 </tr>
             {% endfor %}
@@ -80,3 +80,4 @@
         </table>
     </div>
  </div>
+{% endblock %}

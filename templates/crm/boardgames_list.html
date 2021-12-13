@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 {% extends 'crm/base.html' %}
+{% load mathfilters %}
 {% block content %}
+{% load humanize %}
     <head>
         <meta charset="UTF-8">
         <title>Board Game List</title>
@@ -61,7 +63,7 @@
                     </td>
                     {% endif %}
                     <td><a href="{% url 'crm:boardgames_detail' pk=boardgames.pk %}"
-                           class="btn btn-primary">Boardgame Details</a>
+                           class="btn btn-primary">Board Game Details</a>
                 </tr>
             {% endfor %}
             </tbody>

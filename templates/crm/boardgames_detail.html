@@ -7,9 +7,9 @@
         <div class="row">
             <div class="col-md-10 col-md-offset-1">
                 <div class="panel panel-primary">
-                    <div class="panel-heading">Welcome!</div>
+                    <div class="panel-heading">Board Game Detail</div>
                     <div class="panel-body">
-                        Here you can see details for the game and add it to your want list or trade list.
+                        Here you can see details for a game and add it to your want list or trade list.
                     </div>
                 </div>
             </div>
@@ -56,8 +56,8 @@
 
     <td><a href="{% url 'crm:home' %}" class="btn btn-warning">Add to Trade List</a></td>
     <td><a href="{% url 'crm:home' %}" class="btn btn-warning">Add to Want List</a></td>
-    <td><a href="{% url 'crm:home' %}" class="btn btn-primary">All User Trade List</a></td>
-    <td><a href="{% url 'crm:home' %}" class="btn btn-primary">All User Want List</a></td>
+    <td><a href="{% url 'crm:all_user_trade_list' pk=user.pk %}" class="btn btn-primary">All User Trade List</a></td>
+    <td><a href="{% url 'crm:all_user_want_list' pk=user.pk %}" class="btn btn-warning">All User Want List</a></td>
     </div>
     </div>
     </div>
