@@ -55,18 +55,19 @@ def user_delete(request, pk):
     user.delete()
     return redirect('crm:user_list')
 
+
 @login_required
 def user_detail(request, pk):
     user = get_object_or_404(User, pk=pk)
     users = User.objects.filter(username=user.username)
-
-
     return render(request, 'crm/user_detail.html', {'users': users})
+
 
 @login_required
 def boardgames_list(request):
     boardgames = Boardgames.objects.filter(created_date__lte=timezone.now())
     return render(request, 'crm/boardgames_list.html', {'boardgames': boardgames})
+
 
 @login_required
 def boardgames_new(request):
@@ -83,6 +84,7 @@ def boardgames_new(request):
         form = BoardGameForm()
         # print("Else")
     return render(request, 'crm/boardgames_new.html', {'form': form})
+
 
 @login_required
 def boardgames_edit(request, pk):
@@ -108,29 +110,27 @@ def boardgames_delete(request, pk):
     boardgames.delete()
     return redirect('crm:boardgames_list')
 
+
 @login_required
 def boardgames_detail(request, pk):
     boardgames = get_object_or_404(Boardgames, pk=pk)
     boardgames = Boardgames.objects.filter(boardgames_title=boardgames.boardgames_title)
-
     return render(request, 'crm/boardgames_detail.html', {'boardgames': boardgames})
+
 
 @login_required
 def all_user_trade_list(request, pk):
-    boardgames = get_object_or_404(Boardgames, pk=pk)
-    #boardgames = Boardgames.objects.filter(boardgames_title=boardgames.boardgames_title)
-
-    #user = get_object_or_404(BoardgamesAvailable)
-    users = BoardgamesAvailable.objects.filter(boardgames=boardgames.id)
-
+    user = get_object_or_404(User, pk=pk)
+    users = User.objects.filter(username=user.username)
     return render(request, 'crm/all_user_trade_list.html', {'users': users})
 
-#@login_required
-#def all_user_want_list(request, pk):
-#    boardgames = get_object_or_404(Boardgames, pk=pk)
-#    boardgames = Boardgames.objects.filter(boardgames_title=boardgames.boardgames_title)
 
-#    return render(request, 'crm/all_user_want_list.html', {'boardgames': boardgames})
+@login_required
+def all_user_want_list(request, pk):
+    user = get_object_or_404(User, pk=pk)
+    users = User.objects.filter(username=user.username)
+    return render(request, 'crm/all_user_want_list.html', {'users': users})
+
 
 def register(request):
     if request.method == 'POST':

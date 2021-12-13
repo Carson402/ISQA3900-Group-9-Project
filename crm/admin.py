@@ -13,7 +13,7 @@ class UserList(admin.ModelAdmin):
 
 class BoardgamesList(admin.ModelAdmin):
     list_display = ( 'boardgames_title', 'boardgames_BGG_rank')
- #   list_filter = ( 'boardgames_title')
+#   list_filter = ( 'boardgames_title')
     search_fields = ('boardgames_title',)
     ordering = ['boardgames_title']
 
