@@ -56,12 +56,13 @@
                     <td>{{ user.first_name }}</td>
                     <td>{{ user.last_name }}</td>
                     <td>{{ user.email }}</td>
-                    {%  if request.user.is_superuser %}
-                    <td>{{ crmuser.address }}</td>
-                    <td>{{ crmuser.city }}</td>
-                    <td>{{ crmuser.state }}</td>
-                    <td>{{ crmuser.zipcode }}</td>
-                    <td>{{ crmuser.phone_number }}</td>
+                    {% if request.user.is_superuser %}
+                    <td>{{ user.crmuser.address }}</td>
+                    <td>{{ user.crmuser.city }}</td>
+                    <td>{{ user.crmuser.state }}</td>
+                    <td>{{ user.crmuser.zipcode }}</td>
+                    <td>{{ user.crmuser.phone_number }}</td>
+
 
                     <td><a href="{% url 'crm:user_edit' pk=user.pk %}"
                            class="btn btn-warning">Edit User</a>
