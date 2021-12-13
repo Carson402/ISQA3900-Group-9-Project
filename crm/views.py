@@ -30,22 +30,22 @@ def user_list(request):
 
 @login_required
 def user_edit(request, pk):
-    # user = get_object_or_404(User, pk=pk)
-    if request.method == "POST":
-        # update
+    if request.method == 'POST':
         user_form = UserForm(request.POST, instance=request.user)
-        crmuser_form = CRMUserForm(request.POST, instance=request.user.crmuser)
-        if user_form.is_valid() and crmuser_form.is_valid():
+        profile_form = CRMUserForm(request.POST, instance=request.user.crmuser)
+        if user_form.is_valid() and profile_form.is_valid():
             user_form.save()
-            crmuser_form.save()
-            return render(request, 'crm/user_list.html')
+            profile_form.save()
+#            messages.success(request, _('Your profile was successfully updated!'))
+            return redirect('crm:user_list')
+#        else:
+#            messages.error(request, _('Please correct the error below.'))
     else:
-        # edit
         user_form = UserForm(instance=request.user)
-        crmuser_form = CRMUserForm(request.POST, instance=request.user.crmuser)
+        profile_form = CRMUserForm(instance=request.user.crmuser)
     return render(request, 'crm/user_edit.html', {
         'user_form': user_form,
-        'crmuser_form': crmuser_form
+        'profile_form': profile_form
     })
 
 
