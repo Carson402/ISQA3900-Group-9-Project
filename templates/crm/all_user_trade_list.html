@@ -32,14 +32,12 @@
                     <th colspan="3">Actions</th>
                 </tr>
                 </thead>
-
                 <tbody>
                 {% for user in users %}
                     <tr>
                         <td>{{ user.user_name }}</td>
                         <td>{{ user.user_first_name }}</td>
                         <td>{{ user.user_last_name }}</td>
-
                         <td><a href="{% url 'crm:user_detail' pk=user.pk %}"
                                class="btn btn-warning">Go to this Users Page</a>
                     </tr>

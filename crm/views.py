@@ -30,7 +30,7 @@ def user_list(request):
 
 @login_required
 def user_edit(request, pk):
-    user = get_object_or_404(User, pk=pk)
+    # user = get_object_or_404(User, pk=pk)
     if request.method == "POST":
         # update
         user_form = UserForm(request.POST, instance=request.user)
@@ -145,6 +145,9 @@ def register(request):
 
     return render(request, 'crm/register.html', {'form': f})
 
+
 class PasswordResetReCaptcha(PasswordResetView):
     form_class = PasswordResetReCaptchaForm
+
+
 
