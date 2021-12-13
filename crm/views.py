@@ -148,3 +148,6 @@ def register(request):
 
 class PasswordResetReCaptcha(PasswordResetView):
     form_class = PasswordResetReCaptchaForm
+
+
+

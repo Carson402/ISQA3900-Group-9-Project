@@ -49,16 +49,11 @@
 
                 </tbody>
             </table>
-            </tbody>
-            </table>
         </div>
     </div>
 
-    <td><a href="{% url 'crm:home' %}" class="btn btn-warning">Add to Trade List</a></td>
-    <td><a href="{% url 'crm:home' %}" class="btn btn-warning">Add to Want List</a></td>
+    <td><a href="{% url 'crm:user_detail' pk=user.pk %}" class="btn btn-warning">Add to my Trade List</a></td>
+    <td><a href="{% url 'crm:user_detail' pk=user.pk %}" class="btn btn-warning">Add to my Want List</a></td>
     <td><a href="{% url 'crm:all_user_trade_list' pk=user.pk %}" class="btn btn-warning">All User Trade List</a></td>
     <td><a href="{% url 'crm:all_user_want_list' pk=user.pk %}" class="btn btn-warning">All User Want List</a></td>
-    </div>
-    </div>
-    </div>
 {% endblock %}
