@@ -50,11 +50,11 @@
                     <td>{{ user.last_name }}</td>
                     <td>{{ user.email }}</td>
                     {%  if request.user.is_superuser %}
-                    <td>{{ user.address }}</td>
-                    <td>{{ user.city }}</td>
-                    <td>{{ user.state }}</td>
-                    <td>{{ user.zipcode }}</td>
-                    <td>{{ user.phone_number }}</td>
+                    <td>{{ user.crmuser.address }}</td>
+                    <td>{{ user.crmuser.city }}</td>
+                    <td>{{ user.crmuser.state }}</td>
+                    <td>{{ user.crmuser.zipcode }}</td>
+                    <td>{{ user.crmuser.phone_number }}</td>
                     {% endif %}
             {% endfor %}
             </tbody>
