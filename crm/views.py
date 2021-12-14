@@ -132,6 +132,11 @@ def all_user_want_list(request, pk):
     return render(request, 'crm/all_user_want_list.html', {'users': users})
 
 
+@login_required
+def add_to_want_list(request, pk):
+    model = Boardgames
+
+
 def register(request):
     if request.method == 'POST':
         f = CustomUserCreationForm(request.POST)

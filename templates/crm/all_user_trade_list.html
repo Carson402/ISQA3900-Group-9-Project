@@ -17,10 +17,12 @@
     </div>
 
     <div class="row">
-
-        <h1 style="padding-left: 15Px">A list of users with {{ boardgames.boardgames_title }} in their trade list</h1>
+        {% for boardgames in boardgames %}
+            <h1 style="padding-left: 15Px">A List of Users With {{ boardgames.boardgames_title }} in Their Trade
+                List</h1>
+        {% endfor %}
         <div class="row">
-            <h2 style="padding-left: 15Px">User Information</h2>
+            <h2 style="padding-left: 15Px">User Trade List Information</h2>
         </div>
         <div>
             <table class="table table-striped table-bordered table-hover">
@@ -46,5 +48,4 @@
             </table>
         </div>
     </div>
- </div>
 {% endblock %}

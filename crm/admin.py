@@ -17,4 +17,5 @@ class BoardgamesList(admin.ModelAdmin):
     search_fields = ('boardgames_title',)
     ordering = ['boardgames_title']
 
+
 admin.site.register(Boardgames, BoardgamesList)
